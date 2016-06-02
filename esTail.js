@@ -192,7 +192,7 @@ function printOutput(){
 		console.info("===="+hit+" of "+output.length);
 		// If allfields cli option is set show all the fields not just one field
 		if ( allfields ) {
-			console.log(hit._source["@timestamp"].red+":\n".green+JSON.stringify(hit._source));
+			console.log(hit._source["@timestamp"].red+": ".green+hit._index.green+":\n".green+JSON.stringify(hit._source));
 
 		}else{
 			// If not allfields 
@@ -201,7 +201,7 @@ function printOutput(){
 				console.log(JSON.stringify(hit,null,2));
 			}else{
 				//If not rawoutput print <indexed time>: <index>:message
-				console.log(hit._source["@timestamp"].red+": ".green+hit._index.green+":".green+hit._source.message)
+				console.log(hit._source["@timestamp"].red+": ".green+hit._index.green+": ".green+hit._source.message)
 			}
 
 		}
@@ -231,7 +231,7 @@ function doSearch(){
 		console.error("ERR:".red+error);
 		return;
 	  }
-	  console.info("INFO".yellow+"Count = "+response.hits.hits.length);
+	  console.info("INFO".yellow+" Count = "+response.hits.hits.length);
 	  response.hits.hits.forEach(function (hit) {
 		// If allfields cli option is set show all the fields not just one field
 		//console.info("INFO".yellow+"Push Object");
